@@ -8,7 +8,33 @@ var config = {
   messagingSenderId: "459994441579"
 };
 firebase.initializeApp(config);
+const database = firebase.database();
+let name = "";
+let role = "";
+let start = "";
+let rate = 0;
 
 $("#add-employee-btn").on("click", function() {
-  alert("been clicked ");
+  event.preventDefault();
+
+  name = $("#name-input")
+    .val()
+    .trim();
+  role = $("#role-input")
+    .val()
+    .trim();
+  start = $("#start-input")
+    .val()
+    .trim();
+  rate = $("#rate-input")
+    .val()
+    .trim();
+
+  database.ref().push({
+    name: name,
+    role: role,
+    start: start,
+    rate: rate,
+    dateAdded: firebase.database.ServerValue.TIMESTAMP
+  });
 });
