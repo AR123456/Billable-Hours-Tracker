@@ -10,12 +10,7 @@ var config = {
 firebase.initializeApp(config);
 const database = firebase.database();
 
-// let name = "";
-// let role = "";
-// let start = "";
-// let rate = 0;
-
-$("#add-employee-btn").on("click", function() {
+$("#add-client-btn").on("click", function() {
   event.preventDefault();
 
   let name = $("#name-input")
@@ -34,14 +29,14 @@ $("#add-employee-btn").on("click", function() {
     .val()
     .trim();
 
-  const newEmp = {
+  const newClient = {
     name: name,
     role: role,
     start: start,
     rate: rate,
     dateAdded: firebase.database.ServerValue.TIMESTAMP
   };
-  database.ref().push(newEmp);
+  database.ref().push(newClient);
   $("#name-input").val("");
   $("#role-input").val("");
   $("#start-input").val("");
@@ -53,12 +48,11 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   let role = childSnapshot.val().role;
   let start = childSnapshot.val().start;
   let rate = childSnapshot.val().rate;
-
   let startPretty = moment.unix(start).format("MM/DD/YY");
-  let empMonths = moment().diff(moment.unix(start, "X"), "months");
-  let empBilled = empMonths * rate;
+  let clientMonths = moment().diff(moment.unix(start, "X"), "months");
+  let clientBilled = clientMonths * rate;
 
-  $("#employee-table > tbody").append(
+  $("#client-table > tbody").append(
     "<tr><td>" +
       name +
       "</td><td>" +
@@ -66,11 +60,11 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
       "</td><td>" +
       startPretty +
       "</td><td>" +
-      empMonths +
+      clientMonths +
       "</td><td>" +
       rate +
       "</td><td>" +
-      empBilled +
+      clientBilled +
       "</td></tr>"
   );
 });

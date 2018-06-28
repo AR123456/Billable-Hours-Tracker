@@ -4,18 +4,14 @@
 
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-    <title>Employee Tracker</title>
-
-    <!-- Bootstrap
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <title>Billable Hours Tracker</title>
 
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
 
     <!-- Moment.js Reference -->
-    <script src="http://momentjs.com/downloads/moment.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 
@@ -33,33 +29,33 @@
 
 <body>
 
-    <!-- Employee Tracker -->
+    <!-- Billable hours tracker -->
     <div class="container-fluid">
 
         <!-- Jumbotron -->
         <div class="jumbotron" style="background-color: black; color: white">
-            <h1 class="text-center">Employee Data Management</h1>
-            <h3 class="text-center">A Comprehensive Directory of Employee Billable Hours</h3>
+            <h1 class="text-center">Client Data Management</h1>
+            <h3 class="text-center">Track Billable Hours</h3>
         </div>
 
         <div class="row">
 
             <div class="col-lg-12">
 
-                <!-- Current Employees-->
+                <!-- Current Clients -->
                 <div class="card card-primary">
                     <div class="card-heading">
                         <h3 class="card-title">
-                            <strong>Current Employees</strong>
+                            <strong>Clients</strong>
                         </h3>
                     </div>
                     <div class="card-body">
-                        <table class="table table-hover" id='employee-table'>
+                        <table class="table table-hover" id='client-table'>
                             <thead>
                                 <tr>
-                                    <th>Employee Name</th>
+                                    <th>Client Name</th>
 
-                                    <th>Role</th>
+                                    <th>Role/Job Title</th>
                                     <th>Start Date</th>
                                     <th>Months Worked</th>
                                     <th>Monthly Rate ($)</th>
@@ -67,22 +63,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- <td id="name">name </td>
-                                <td id="role">role </td>
-                                <td id="start">start </td>
-                                <td id="worked">worked </td>
-                                <td id="rate">rate </td>
-                                <td id="billed">billed</td> -->
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <!-- Add Employee  -->
+                <!-- Add Client  -->
                 <div class="card card-primary">
                     <div class="card-heading">
                         <h3 class="card-title">
-                            <strong>Add Employee</strong>
+                            <strong>Add Client</strong>
                         </h3>
                     </div>
                     <div class="card-body">
@@ -90,7 +80,7 @@
                         <!-- Entry Form -->
                         <form>
                             <div class="form-group">
-                                <label for="employee-name-input">Employee Name</label>
+                                <label for="client-name-input">Client</label>
                                 <input class="form-control" id="name-input" type="text">
                             </div>
                             <div class="form-group">
@@ -105,7 +95,7 @@
                                 <label for="rate-input">Monthly Rate</label>
                                 <input class="form-control" id="rate-input" type="text">
                             </div>
-                            <button class="btn btn-primary" id="add-employee-btn" type="submit">Submit</button>
+                            <button class="btn btn-primary" id="add-client-btn" type="submit">Submit</button>
                         </form>
 
                     </div>
